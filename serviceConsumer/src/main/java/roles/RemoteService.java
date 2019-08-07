@@ -4,7 +4,7 @@ public class RemoteService {
 
     private String id;
     private String host;
-    private int post;
+    private int port;
     private String serviceName;
 
     public static RemoteService getDesciber( String id,String desc ){
@@ -14,7 +14,7 @@ public class RemoteService {
         remoteService.setServiceName(split[1]);
         String[] hostAndPort = split[0].split(":");
         remoteService.setHost(hostAndPort[0]);
-        remoteService.setPost(Integer.parseInt(hostAndPort[1]));
+        remoteService.setPort(Integer.parseInt(hostAndPort[1]));
         return remoteService;
     }
 
@@ -35,12 +35,12 @@ public class RemoteService {
         this.host = host;
     }
 
-    public int getPost() {
-        return post;
+    public int getPort() {
+        return port;
     }
 
-    public void setPost(int post) {
-        this.post = post;
+    public void setPort(int port) {
+        this.port = port;
     }
 
     public String getServiceName() {

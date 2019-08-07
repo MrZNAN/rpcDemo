@@ -1,13 +1,22 @@
-package roles;
+package zn.ioc;
 
 import java.io.Serializable;
 
 public class ServiceDescriber implements Serializable {
 
-    private String ServiceName;
+    private String serviceName;
     private Object[] args;
     private Object result;
     private String methodName;
+    private Class serviceClass;
+
+    public Class getServiceClass() {
+        return serviceClass;
+    }
+
+    public void setServiceClass(Class serviceClass) {
+        this.serviceClass = serviceClass;
+    }
 
     public String getMethodName() {
         return methodName;
@@ -18,11 +27,11 @@ public class ServiceDescriber implements Serializable {
     }
 
     public String getServiceName() {
-        return ServiceName;
+        return serviceName;
     }
 
     public void setServiceName(String serviceName) {
-        this.ServiceName = serviceName;
+        this.serviceName = serviceName;
     }
 
     public Object[] getArgs() {
