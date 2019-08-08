@@ -12,16 +12,22 @@ public class ServiceFinder {
     private static String RPC_DEMO = "rpcDemo";
 
     public Socket findService() {
+        int reTryTimes = 0;
         Socket socket;
         try {
             socket = tryConnect();
         } catch (IOException e) {
+            reTryTimes++;
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
-            socket = findService();
+            if(reTryTimes <= 5){
+                socket = findService();
+            }else{
+                throw new RuntimeException("经过多次重试，仍未与服务器链接！");
+            }
         }
         return socket;
 
