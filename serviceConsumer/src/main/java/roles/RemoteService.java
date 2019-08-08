@@ -10,9 +10,7 @@ public class RemoteService {
     public static RemoteService getDesciber( String id,String desc ){
         RemoteService remoteService = new RemoteService();
         remoteService.setId(id);
-        String[] split = desc.split("-");
-        remoteService.setServiceName(split[1]);
-        String[] hostAndPort = split[0].split(":");
+        String[] hostAndPort = desc.split(":");
         remoteService.setHost(hostAndPort[0]);
         remoteService.setPort(Integer.parseInt(hostAndPort[1]));
         return remoteService;

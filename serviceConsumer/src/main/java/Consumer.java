@@ -13,11 +13,18 @@ public class Consumer {
 
     public static void main(String[] args) throws Exception{
 
-        Socket socket = ServiceFinder.findService();
-        SpringContext sc = new SpringContext("service",socket);
+        for(int i = 0 ; i< 200 ; i++){
 
-        Check check = (Check)sc.getBean(Check.class);
-        check.check();
+            Thread.sleep(1000);
+
+            Socket socket = new ServiceFinder().findService();
+            SpringContext sc = new SpringContext("service",socket);
+
+            Check check = (Check)sc.getBean(Check.class);
+            check.check();
+        }
+
+
     }
 
 }
