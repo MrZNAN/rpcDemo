@@ -8,7 +8,7 @@ import java.util.Random;
 public class SocketPoll {
 
     private static List<Socket> socketsPoll = new ArrayList<>();
-    private int POOL_SIZE = 5;
+    private int POOL_SIZE = 1;
     private int tyrTime = 0;
 
     private static SocketPoll socketPoll;

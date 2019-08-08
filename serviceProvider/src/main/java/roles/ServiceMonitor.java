@@ -44,7 +44,7 @@ public class ServiceMonitor  {
                     new InvocationHandler() {
                         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                             if(method.getName().toLowerCase().equals(serviceDescriber.getMethodName().toLowerCase())){
-                                System.out.println("--"+accept.getInetAddress()+accept.getPort()+"-调用了我的【"+method.getName()+"】方法--");
+                                System.out.println("--"+accept.getInetAddress()+":"+accept.getPort()+"-调用了我的【"+method.getName()+"】方法--");
                                 return method.invoke(obj, args);
                             }else{
                                 return null;

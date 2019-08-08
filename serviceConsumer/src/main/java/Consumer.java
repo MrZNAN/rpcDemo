@@ -16,8 +16,6 @@ public class Consumer {
             Check check = (Check)sc.getBean(Check.class);
             check.check();
         }
-
-
     }
 
 }
