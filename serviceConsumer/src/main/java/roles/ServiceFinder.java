@@ -9,13 +9,13 @@ import java.util.*;
 
 public class ServiceFinder {
 
-    private static String RPC_DEMO = "rpcDemo";
+    public static String RPC_DEMO = "rpcDemo";
 
     public Socket findService() {
         int reTryTimes = 0;
-        Socket socket;
+        Socket socket = SocketPoll.getSocketPoll().getSocket();
         try {
-            socket = tryConnect();
+            socket = tryConnect(socket);
         } catch (IOException e) {
             reTryTimes++;
             try {
@@ -33,15 +33,11 @@ public class ServiceFinder {
 
     }
 
-    private Socket tryConnect() throws IOException {
-        List<String> values = RedisUtil.getAllKeys(ServiceFinder.RPC_DEMO + "*");
+    private Socket tryConnect(Socket socket) throws IOException {
 
-        int id = new Random().nextInt(values.size());
-        String hostAndPort = values.get(id);
-        RemoteService desciber = RemoteService.getDesciber(UUID.randomUUID().toString(), hostAndPort);
-        Socket socket = new Socket();
+        List<String> allKeys = RedisUtil.getAllKeys(ServiceFinder.RPC_DEMO + "*");
+        RemoteService desciber = RemoteService.getDesciber(UUID.randomUUID().toString(), allKeys.get(new Random().nextInt(allKeys.size())));
         socket.connect(new InetSocketAddress(desciber.getHost(),desciber.getPort()));
         return socket;
     }
-
 }

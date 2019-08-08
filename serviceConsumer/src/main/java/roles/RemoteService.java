@@ -16,7 +16,6 @@ public class RemoteService {
         return remoteService;
     }
 
-
     public String getId() {
         return id;
     }

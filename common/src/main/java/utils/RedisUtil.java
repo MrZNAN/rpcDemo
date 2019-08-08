@@ -2,7 +2,6 @@ package utils;
 
 import redis.clients.jedis.Jedis;
 
-import java.io.*;
 import java.util.*;
 
 public class RedisUtil {
@@ -12,9 +11,7 @@ public class RedisUtil {
         jedis = new Jedis("127.0.0.1", 6379);
     }
 
-
     public static void addHash(String pKey, String key, String value) throws Exception{
-
         Set<String> hkeys = jedis.hkeys(pKey);
         if(hkeys == null || hkeys.size() == 0){
             Map<String, String> hashMap = new HashMap<String, String>(16);
@@ -23,7 +20,6 @@ public class RedisUtil {
         }else{
             jedis.hset(pKey , key, value);
         }
-
     }
 
     public static List<String>  getAllKeys(String partten){
